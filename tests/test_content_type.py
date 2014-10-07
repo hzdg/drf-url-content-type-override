@@ -12,7 +12,7 @@ def test_content_type_override_query():
     from rest_url_override_content_negotiation import \
         URLOverrideContentNegotiation
     negotiation = URLOverrideContentNegotiation()
-    parsers = (JSONParser, FormParser, MultiPartParser)
+    parsers = (JSONParser(), FormParser(), MultiPartParser())
 
     requestWithQueryParam = Request(
         factory.post('/?content_type=application/x-www-form-urlencoded',
@@ -37,7 +37,7 @@ def test_limited_overrides():
     from rest_url_override_content_negotiation import \
         URLOverrideContentNegotiation
     negotiation = URLOverrideContentNegotiation()
-    parsers = (JSONParser, FormParser, MultiPartParser)
+    parsers = (JSONParser(), FormParser(), MultiPartParser())
 
     req = Request(
         factory.post('/?content_type=application/x-www-form-urlencoded',
