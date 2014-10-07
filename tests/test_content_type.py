@@ -18,8 +18,8 @@ def test_content_type_override_query():
         factory.post('/?content_type=application/x-www-form-urlencoded',
                      {'email': 'mmmmmm@test.com'},
                      content_type='text/plain'))
-    assert FormParser is negotiation.select_parser(
-        requestWithQueryParam, parsers)
+    parser = negotiation.select_parser(requestWithQueryParam, parsers)
+    assert parser.media_type == 'application/x-www-form-urlencoded'
 
     requestWithoutQueryParam = Request(
         factory.post('/', {'email': 'mmmmmm@test.com'},
