@@ -36,6 +36,7 @@ setup(
     tests_require=[
         'pytest',
         'djangorestframework',
+        'mock'
     ],
     install_requires=[
         'Django>=1.6.5'

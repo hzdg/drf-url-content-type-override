@@ -1,8 +1,8 @@
 import pytest
 from rest_framework.request import Request
 from rest_framework.test import APIRequestFactory
-
 from rest_framework.parsers import JSONParser, FormParser, MultiPartParser
+from mock import Mock
 
 
 factory = APIRequestFactory()
@@ -44,3 +44,21 @@ def test_limited_overrides():
                      {'email': 'mmmmmm@test.com'},
                      content_type='text/somethingelse'))
     assert negotiation.select_parser(req, parsers) is None
+
+
+def test_parser_media_type():
+    class MockParser(object):
+        media_type = 'text/fake'
+
+    MockParser.parse = Mock()
+
+    from rest_url_override_content_negotiation import \
+        URLOverrideContentNegotiation
+    negotiation = URLOverrideContentNegotiation()
+
+    req = Request(
+        factory.post('/?content_type=text/fake', {'email': 'mmmmmm@test.com'},
+                     content_type='text/plain'))
+    parser = negotiation.select_parser(req, [MockParser()])
+    parser.parse(None, 'text/plain', None)
+    MockParser.parse.assert_called_with(None, 'text/fake', None)
