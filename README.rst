@@ -1,4 +1,4 @@
-django-rest-url-override-content-negotiation
+DRF URL Content Type Override
 ===================================================
 
 DRF URL Content Type Override allows the content type of the request to be overriden with a url parameter.
