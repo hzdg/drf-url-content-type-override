@@ -24,7 +24,7 @@ class PyTest(TestCommand):
 
 setup(
     name='drf-url-content-type-override',
-    version='0.0.1',
+    version='1.0.0',
     author='Chris McKenzie',
     author_email='me@christophermckenzie.com',
     packages=find_packages(),
