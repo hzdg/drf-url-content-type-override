@@ -23,7 +23,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(
-    name='django-drf-content-type-override',
+    name='drf-url-content-type-override',
     version='0.0.1',
     author='Chris McKenzie',
     author_email='me@christophermckenzie.com',
