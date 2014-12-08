@@ -15,7 +15,7 @@ def test_content_type_override_query():
     parsers = (JSONParser(), FormParser(), MultiPartParser())
 
     requestWithQueryParam = Request(
-        factory.post('/?content_type=application/x-www-form-urlencoded',
+        factory.post('/?_content_type=application/x-www-form-urlencoded',
                      {'email': 'mmmmmm@test.com'},
                      content_type='text/plain'))
     parser = negotiation.select_parser(requestWithQueryParam, parsers)
@@ -40,7 +40,7 @@ def test_limited_overrides():
     parsers = (JSONParser(), FormParser(), MultiPartParser())
 
     req = Request(
-        factory.post('/?content_type=application/x-www-form-urlencoded',
+        factory.post('/?_content_type=application/x-www-form-urlencoded',
                      {'email': 'mmmmmm@test.com'},
                      content_type='text/somethingelse'))
     assert negotiation.select_parser(req, parsers) is None
@@ -57,7 +57,7 @@ def test_parser_media_type():
     negotiation = URLOverrideContentNegotiation()
 
     req = Request(
-        factory.post('/?content_type=text/fake', {'email': 'mmmmmm@test.com'},
+        factory.post('/?_content_type=text/fake', {'email': 'mmmmmm@test.com'},
                      content_type='text/plain'))
     parser = negotiation.select_parser(req, [MockParser()])
     parser.parse(None, 'text/plain', None)
