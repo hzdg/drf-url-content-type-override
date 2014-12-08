@@ -9,7 +9,7 @@ factory = APIRequestFactory()
 
 
 def test_content_type_override_query():
-    from rest_url_override_content_negotiation import \
+    from drf_url_content_type_override import \
         URLOverrideContentNegotiation
     negotiation = URLOverrideContentNegotiation()
     parsers = (JSONParser(), FormParser(), MultiPartParser())
@@ -34,7 +34,7 @@ def test_limited_overrides():
     than 'text/plain', or missing entirely.
 
     """
-    from rest_url_override_content_negotiation import \
+    from drf_url_content_type_override import \
         URLOverrideContentNegotiation
     negotiation = URLOverrideContentNegotiation()
     parsers = (JSONParser(), FormParser(), MultiPartParser())
@@ -52,7 +52,7 @@ def test_parser_media_type():
 
     MockParser.parse = Mock()
 
-    from rest_url_override_content_negotiation import \
+    from drf_url_content_type_override import \
         URLOverrideContentNegotiation
     negotiation = URLOverrideContentNegotiation()
 

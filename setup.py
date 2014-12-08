@@ -34,9 +34,11 @@ setup(
     long_description=open('README.rst').read(),
     zip_safe=False,
     tests_require=[
-        'pytest',
+        'Django>=1.6.5',
+        'pytest-django>=2.6.2',
+        'pytest>=2.6.0',
         'djangorestframework',
-        'mock'
+        'mock',
     ],
     install_requires=[
         'Django>=1.6.5'
